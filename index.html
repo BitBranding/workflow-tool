@@ -494,6 +494,61 @@
       .gate-headline { font-size: 26px; }
       #panel-form, #panel-results, #panel-combined { padding: 20px 16px; }
     }
+
+    /* ── POST-RESULTS CTA ── */
+    .results-cta {
+      margin-top: 36px;
+      padding: 40px 32px;
+      background: linear-gradient(135deg, rgba(184,128,87,0.07) 0%, rgba(80,110,122,0.07) 100%);
+      border: 1px solid rgba(184,128,87,0.22);
+      border-top: 3px solid var(--bronze);
+      border-radius: 12px;
+      text-align: center;
+    }
+    .cta-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 14px;
+      opacity: 0.85;
+    }
+    .cta-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 3.5vw, 34px);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .cta-sub {
+      font-size: 14px;
+      color: rgba(232,219,178,0.55);
+      line-height: 1.75;
+      max-width: 400px;
+      margin: 0 auto 28px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--bronze);
+      color: var(--darker);
+      padding: 15px 32px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .cta-btn:hover { background: #c99060; transform: translateY(-1px); }
+    .cta-note {
+      font-size: 11px;
+      color: rgba(232,219,178,0.25);
+      margin-top: 18px;
+      letter-spacing: 0.03em;
+    }
   </style>
 </head>
 <body>
@@ -589,6 +644,14 @@
     </div>
 
     <div id="variants-container"></div>
+      <!-- POST-RESULTS CTA -->
+      <div class="results-cta">
+        <p class="cta-eyebrow">&#10022; Your variants are ready</p>
+        <h2 class="cta-headline">Ready to run these?</h2>
+        <p class="cta-sub">BitBranding builds the full campaign — creative, targeting, and copy that actually converts. Let&rsquo;s turn these variants into real results.</p>
+        <a href="https://bitbranding.co/call" target="_blank" class="cta-btn">Book a Free Strategy Call &rarr;</a>
+        <p class="cta-note">No pressure &mdash; 20 minutes. We&rsquo;ll tell you exactly what we&rsquo;d do with these.</p>
+      </div>
 
     <div id="results-error" class="error-box"></div>
 
