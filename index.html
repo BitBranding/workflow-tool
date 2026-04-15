@@ -659,12 +659,12 @@
 
   function parseVariants(text) {
     var variants = [];
-    var re = /Variant\s+([ABC])[:\s\u2013\-]*([\s\S]*?)(?=Variant\s+[ABC]|$)/gi;
+    var re = /\*\*Variant\s+([ABC])\*\*[:\s\u2013\-]*([\s\S]*?)(?=\*\*Variant\s+[ABC]\*\*|$)/gi;
     var m;
     while ((m = re.exec(text)) !== null) {
       variants.push({ label: m[1].toUpperCase(), content: m[2].trim() });
     }
-    return variants.length === 3 ? variants : [{ label: "A", content: text.trim() }];
+    return variants.length >= 3 ? variants.slice(0, 3) : [{ label: "A", content: text.trim() }];
   }
 
   function callClaude(messages, maxTokens, onSuccess, onError) {
