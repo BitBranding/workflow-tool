@@ -127,10 +127,10 @@
     }
 
     .label-name {
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 15px;
+      font-weight: 600;
       color: var(--cream);
-      letter-spacing: 0.01em;
+      letter-spacing: 0.03em;
     }
 
     .label-hint {
@@ -146,8 +146,9 @@
       border-radius: 7px;
       padding: 13px 15px;
       color: var(--cream);
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.65;
+      min-height: 100px;
       resize: vertical;
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
@@ -264,7 +265,8 @@
 
     .variant-card {
       background: var(--card2);
-      border: 2px solid rgba(80,110,122,0.3);
+      border: 1px solid rgba(80,110,122,0.25);
+      border-top: 3px solid var(--bronze);
       border-radius: 9px;
       padding: 22px 24px;
       margin-bottom: 16px;
@@ -286,9 +288,10 @@
     }
 
     .variant-circle {
-      width: 28px; height: 28px;
+      width: 52px; height: 52px;
       border-radius: 50%;
-      background: rgba(80,110,122,0.35);
+      background: rgba(184,128,87,0.12);
+      border: 1px solid rgba(184,128,87,0.3);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -465,6 +468,14 @@
     }
     .gate-form button:hover { opacity: 0.88; }
     .gate-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .gate-proof {
+      font-size: 12px;
+      color: var(--bronze);
+      letter-spacing: 0.04em;
+      margin-bottom: 28px;
+      opacity: 0.85;
+    }
+
     .gate-disclaimer {
       margin-top: 14px;
       font-size: 11px;
@@ -477,6 +488,12 @@
       margin-top: 4px;
       display: none;
     }
+    @media (max-width: 600px) {
+      textarea { min-height: 90px; font-size: 16px; }
+      .variant-circle { width: 40px; height: 40px; font-size: 20px; }
+      .gate-headline { font-size: 26px; }
+      #panel-form, #panel-results, #panel-combined { padding: 20px 16px; }
+    }
   </style>
 </head>
 <body>
@@ -485,6 +502,7 @@
     <p class="gate-eyebrow">BitBranding &middot; Ad Workflow Tool</p>
     <h1 class="gate-headline">Enter your email to<br><em>unlock the tool.</em></h1>
     <p class="gate-sub">Get instant access to the Ad Workflow Tool &mdash; plus tips, frameworks and updates from BitBranding.</p>
+    <p class="gate-proof">&#10003;&nbsp; 3 ready-to-run ad variants in under 60 seconds</p>
     <form class="gate-form" id="gate-form" onsubmit="return false;">
       <input type="email" id="gate-email" placeholder="your@email.com" autocomplete="email" />
       <button type="submit" id="gate-btn">Get Access &rarr;</button>
@@ -736,7 +754,7 @@
       el.addEventListener("click", function () { toggleSelect(i); });
       c.appendChild(el);
     });
-    updateCombineBtn();
+    updateCombineBtn(); document.getElementById('combine-hint') && (document.getElementById('combine-hint').style.display = 'block');
   }
 
   function toggleSelect(i) {
