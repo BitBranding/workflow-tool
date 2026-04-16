@@ -830,7 +830,7 @@
     var c = document.getElementById("variants-container");
     c.innerHTML = "";
     var audienceLabels = ["Cold audience", "Warm traffic", "Retargeting"];
-    variants.forEach(function (v, i) {
+    state.variants.forEach(function (v, i) {
       var el = document.createElement("div");
       el.className = "variant-card" + (state.selected.indexOf(i) >= 0 ? " selected" : "");
       el.innerHTML =
