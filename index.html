@@ -287,6 +287,15 @@
       margin-bottom: 14px;
     }
 
+    .variant-audience {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      opacity: 0.75;
+      margin-bottom: 12px;
+    }
+
     .variant-circle {
       width: 52px; height: 52px;
       border-radius: 50%;
@@ -583,7 +592,7 @@
     <div class="input-block">
       <div class="input-label">
         <span class="step-num">01</span>
-        <span class="label-name">Customer Psychology</span>
+        <span class="label-name">Who is your customer, really?</span>
         <span class="label-hint">— who they are + what they tell themselves about why they buy</span>
       </div>
       <textarea id="inp-psych" rows="3" placeholder='e.g. "She&apos;s 28-35, buys clothes that signal she&apos;s effortless but intentional. She hates brands that try too hard. She tells herself she buys for quality but really buys for how it makes her feel walking into a room."'></textarea>
@@ -592,30 +601,39 @@
     <div class="input-block">
       <div class="input-label">
         <span class="step-num">02</span>
-        <span class="label-name">Product Outcome</span>
+        <span class="label-name">What does your product actually do for them?</span>
         <span class="label-hint">— not features, the feeling or signal wearing this creates</span>
       </div>
-      <textarea id="inp-outcome" rows="3" placeholder='e.g. "Our oversized linen shirt makes her feel put-together without looking like she tried. It signals taste, not trend-chasing. She gets compliments from people she respects."'></textarea>
+      <textarea id="inp-outcome" rows="3" placeholder='e.g. "Not the features — the feeling. She puts it on and exhales. Doesn\'t think about her outfit again for the rest of the day. Gets a compliment from someone whose taste she actually respects."'></textarea>
     </div>
 
     <div class="input-block">
       <div class="input-label">
         <span class="step-num">03</span>
-        <span class="label-name">Competitor Gap</span>
+        <span class="label-name">What are other brands getting wrong?</span>
         <span class="label-hint">— what they say + the emotional territory they're missing</span>
       </div>
-      <textarea id="inp-gap" rows="3" placeholder='e.g. "Competitors talk about fabric and sustainability stats. Nobody is speaking to the emotional payoff — the feeling of being the woman in the room who just gets it without explaining herself."'></textarea>
+      <textarea id="inp-gap" rows="3" placeholder='e.g. "Every other brand in this space is talking about fabric quality or sustainability stats. Nobody is speaking to the emotional payoff — the feeling of being exactly yourself, without trying to explain it."'></textarea>
     </div>
 
     <div class="input-block">
       <div class="input-label">
         <span class="step-num">04</span>
-        <span class="label-name">Platform &amp; Constraint</span>
+        <span class="label-name">Where is this ad running and what are the rules?</span>
         <span class="label-hint">— platform, character limit, tone, CTA</span>
       </div>
-      <textarea id="inp-constraint" rows="2" placeholder='e.g. "Instagram feed ad, 125 characters max, casual confident tone, CTA: Shop the drop"'></textarea>
+      <textarea id="inp-constraint" rows="2" placeholder='e.g. "Instagram feed ad, 125 characters max, no hashtags. Tone: calm and confident. CTA: Shop Now"'></textarea>
     </div>
 
+    
+    <div class="field">
+      <div class="field-label">
+        <span class="label-num">05</span>
+        <span class="label-name">How does your brand sound?</span>
+        <span class="label-hint">&mdash; describe your tone like you&rsquo;re describing a person</span>
+      </div>
+      <textarea id="inp-voice" rows="2" placeholder='e.g. "Deadpan and a little funny — like a friend who says exactly what everyone is thinking but never tries too hard. Confident without being loud. Never corporate."'></textarea>
+    </div>
     <div id="form-error" class="error-box"></div>
 
     <button id="btn-generate" class="btn-primary" disabled onclick="generateAds()">
@@ -694,30 +712,35 @@
 (function () {
 
   var SYSTEM_PROMPT = [
-    "You are an expert direct-response copywriter specializing exclusively in DTC clothing brands.",
-    "You write ad copy that sounds like a real human wrote it — not a marketing robot.",
+    "You are a world-class direct-response copywriter for DTC and ecommerce brands.",
+    "You write ad copy that makes people stop scrolling and feel something — not copy that merely describes a product.",
     "",
-    "You deeply understand:",
-    "- How apparel customers make identity-driven purchase decisions",
-    "- The psychology of why people buy clothing (self-expression, status, belonging, aspiration)",
-    "- What makes Meta/Instagram/TikTok ad copy actually stop the scroll",
-    "- The difference between features (fabric weight) and outcomes (how wearing this makes someone feel or appear)",
+    "YOUR RULES:",
+    "- Be specific. Vague copy does not convert. Name the feeling, the moment, the person.",
+    "- Choose a side. The best ad copy has a point of view. It does not try to appeal to everyone.",
+    "- Lead with emotion or identity, not features. Features are what you say after they already want it.",
+    "- Use the brand's voice exactly as given. If they are funny, be funny. If they are quiet and confident, be that.",
+    "- Write like a human who knows this customer personally — not like a marketer who researched them.",
+    "- Short, punchy sentences outperform long elaborate ones for paid social.",
+    "- Sensory and tactile language outperforms abstract language for clothing and lifestyle brands.",
     "",
-    "Your rules:",
-    "- NEVER use \"premium quality,\" \"shop now,\" \"elevate your style,\" or any hollow filler phrase",
-    "- NEVER use exclamation marks unless the brand explicitly uses them",
-    "- ALWAYS write copy that sounds like the customer's inner voice, not a brand announcement",
-    "- Hooks must create tension, curiosity, or identity recognition in the first line",
-    "- CTAs must be specific and low-friction",
+    "OUTPUT FORMAT — follow exactly:",
+    "**Variant A** (Cold audience — lead with identity or a feeling they already have)",
+    "[ad copy only — no explanation]",
     "",
-    "When given 4 inputs produce exactly 3 distinct ad variants each using a different emotional angle or hook style.",
-    "Label them Variant A, Variant B, Variant C.",
-    "After the 3 variants add a brief one-sentence note on what makes each one different strategically."
+    "**Variant B** (Warm audience — lead with the outcome or transformation)",
+    "[ad copy only — no explanation]",
+    "",
+    "**Variant C** (Retargeting — lead with contrast, what makes this different from everything else they have seen)",
+    "[ad copy only — no explanation]",
+    "",
+    "After all 3 variants, add a short section:",
+    "**Strategic notes:** One sentence per variant explaining the psychological mechanism and which platform or placement it suits best."
   ].join("\n");
 
   var state = { variants: [], selected: [], combined: "", constraint: "" };
 
-  var inputIds = ["inp-psych", "inp-outcome", "inp-gap", "inp-constraint"];
+  var inputIds = ["inp-psych", "inp-outcome", "inp-gap", "inp-constraint", "inp-voice"];
   inputIds.forEach(function (id) {
     document.getElementById(id).addEventListener("input", checkForm);
   });
@@ -773,17 +796,19 @@
     var outcome    = document.getElementById("inp-outcome").value.trim();
     var gap        = document.getElementById("inp-gap").value.trim();
     var constraint = document.getElementById("inp-constraint").value.trim();
+    var voice = document.getElementById("inp-voice") ? document.getElementById("inp-voice").value.trim() : "";
     state.constraint = constraint;
     state.selected = [];
 
     document.getElementById("form-error").style.display = "none";
     showPanel("loading");
 
-    var prompt = "Here are my 4 inputs. Generate 3 ad variants.\n\n" +
-      "CUSTOMER PSYCHOLOGY:\n" + psych + "\n\n" +
-      "PRODUCT OUTCOME:\n" + outcome + "\n\n" +
-      "COMPETITOR GAP:\n" + gap + "\n\n" +
-      "PLATFORM & CONSTRAINT:\n" + constraint;
+    var prompt = "Here are my brand inputs. Write 3 distinct ad variants.\n\n" +
+      "WHO IS THE CUSTOMER (psychology + identity):\n" + psych + "\n\n" +
+      "WHAT THE PRODUCT ACTUALLY DOES (feeling, not features):\n" + outcome + "\n\n" +
+      "WHAT COMPETITORS GET WRONG:\n" + gap + "\n\n" +
+      "PLATFORM, FORMAT & CONSTRAINTS:\n" + constraint +
+      (voice ? "\n\nBRAND VOICE & TONE:\n" + voice : "");
 
     callClaude(
       [{ role: "user", content: prompt }],
