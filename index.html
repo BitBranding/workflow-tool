@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ad Workflow Tool — BitBranding</title>
+  <title>Ad Workflow Tool â BitBranding</title>
   <meta name="description" content="Generate 3 ready-to-test ad variants for your clothing brand in minutes. Built on the BitBranding 4-input framework." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,7 +54,7 @@
       padding: 56px 24px 96px;
     }
 
-    /* ── HEADER ── */
+    /* ââ HEADER ââ */
     .header { text-align: center; margin-bottom: 52px; }
 
     .badge {
@@ -100,11 +100,11 @@
       line-height: 1.65;
     }
 
-    /* ── PANELS ── */
+    /* ââ PANELS ââ */
     .panel { display: none; }
     .panel.active { display: block; }
 
-    /* ── FORM ── */
+    /* ââ FORM ââ */
     .input-block { margin-bottom: 26px; }
 
     .input-label {
@@ -161,7 +161,7 @@
     }
     textarea::placeholder { color: rgba(80,110,122,0.7); }
 
-    /* ── BUTTONS ── */
+    /* ââ BUTTONS ââ */
     .btn-primary {
       width: 100%;
       padding: 17px 32px;
@@ -228,7 +228,7 @@
       margin-top: 10px;
     }
 
-    /* ── LOADING ── */
+    /* ââ LOADING ââ */
     .loading-wrap {
       text-align: center;
       padding: 90px 0;
@@ -245,7 +245,7 @@
     .loading-main { color: var(--sage); font-size: 15px; margin-bottom: 8px; }
     .loading-sub { color: rgba(80,110,122,0.8); font-size: 13px; }
 
-    /* ── RESULTS ── */
+    /* ââ RESULTS ââ */
     .panel-head {
       display: flex;
       justify-content: space-between;
@@ -272,7 +272,7 @@
       margin-bottom: 16px;
       cursor: pointer;
       transition: border-color 0.18s, background 0.18s;
-      user-select: none;
+      /* user-select: none; â removed to allow copy */
     }
     .variant-card:hover { border-color: rgba(80,110,122,0.6); }
     .variant-card.selected {
@@ -337,7 +337,7 @@
       white-space: pre-wrap;
     }
 
-    /* ── COMBINED ── */
+    /* ââ COMBINED ââ */
     .combined-card {
       background: linear-gradient(135deg, var(--card2) 0%, rgba(80,110,122,0.18) 100%);
       border: 2px solid rgba(184,128,87,0.55);
@@ -373,7 +373,7 @@
     .footer-cta a { color: var(--bronze); text-decoration: none; }
     .footer-cta a:hover { text-decoration: underline; }
 
-    /* ── ERROR ── */
+    /* ââ ERROR ââ */
     .error-box {
       color: #e07070;
       font-size: 13px;
@@ -385,20 +385,20 @@
       display: none;
     }
 
-    /* ── DIVIDER ── */
+    /* ââ DIVIDER ââ */
     .divider {
       border: none;
       border-top: 1px solid rgba(80,110,122,0.2);
       margin: 32px 0;
     }
 
-    /* ── RESPONSIVE ── */
+    /* ââ RESPONSIVE ââ */
     @media (max-width: 500px) {
       .page { padding: 36px 16px 72px; }
-      .label-hint { display: none; }
+      .label-hint { font-size: 11px; }  /* keep hints visible on mobile */
     }
   
-    /* ── EMAIL GATE ── */
+    /* ââ EMAIL GATE ââ */
     #gate-overlay {
       position: fixed;
       inset: 0;
@@ -497,6 +497,11 @@
       margin-top: 4px;
       display: none;
     }
+    @media (max-width: 768px) {
+      .page { padding: 48px 20px 80px; }
+      .results-cta { padding: 28px 24px; }
+    }
+
     @media (max-width: 600px) {
       textarea { min-height: 90px; font-size: 16px; }
       .variant-circle { width: 40px; height: 40px; font-size: 20px; }
@@ -504,7 +509,7 @@
       #panel-form, #panel-results, #panel-combined { padding: 20px 16px; }
     }
 
-    /* ── POST-RESULTS CTA ── */
+    /* ââ POST-RESULTS CTA ââ */
     .results-cta {
       margin-top: 36px;
       padding: 40px 32px;
@@ -582,7 +587,7 @@
       <div class="badge-dot"></div>
       BitBranding &middot; Ad Workflow Tool
     </div>
-    <h1>Three ready-to-test ads.<br><em>Four inputs. Two minutes.</em></h1>
+    <h1>Three ready-to-test ads.<br><em>Five inputs. Two minutes.</em></h1>
     <p class="header-sub">Built on the exact framework from the video. Give Claude your brand context &mdash; get ad variants that actually sound human.</p>
   </div>
 
@@ -593,7 +598,7 @@
       <div class="input-label">
         <span class="step-num">01</span>
         <span class="label-name">Who is your customer, really?</span>
-        <span class="label-hint">— who they are + what they tell themselves about why they buy</span>
+        <span class="label-hint">â who they are + what they tell themselves about why they buy</span>
       </div>
       <textarea id="inp-psych" rows="3" placeholder='e.g. "She&apos;s 28-35, buys clothes that signal she&apos;s effortless but intentional. She hates brands that try too hard. She tells herself she buys for quality but really buys for how it makes her feel walking into a room."'></textarea>
     </div>
@@ -602,25 +607,25 @@
       <div class="input-label">
         <span class="step-num">02</span>
         <span class="label-name">What does your product actually do for them?</span>
-        <span class="label-hint">— not features, the feeling or signal wearing this creates</span>
+        <span class="label-hint">â not features, the feeling or signal wearing this creates</span>
       </div>
-      <textarea id="inp-outcome" rows="3" placeholder='e.g. "Not the features — the feeling. She puts it on and exhales. Doesn\'t think about her outfit again for the rest of the day. Gets a compliment from someone whose taste she actually respects."'></textarea>
+      <textarea id="inp-outcome" rows="3" placeholder='e.g. "Not the features â the feeling. She puts it on and exhales. Doesn\'t think about her outfit again for the rest of the day. Gets a compliment from someone whose taste she actually respects."'></textarea>
     </div>
 
     <div class="input-block">
       <div class="input-label">
         <span class="step-num">03</span>
         <span class="label-name">What are other brands getting wrong?</span>
-        <span class="label-hint">— what they say + the emotional territory they're missing</span>
+        <span class="label-hint">â what they say + the emotional territory they're missing</span>
       </div>
-      <textarea id="inp-gap" rows="3" placeholder='e.g. "Every other brand in this space is talking about fabric quality or sustainability stats. Nobody is speaking to the emotional payoff — the feeling of being exactly yourself, without trying to explain it."'></textarea>
+      <textarea id="inp-gap" rows="3" placeholder='e.g. "Every other brand in this space is talking about fabric quality or sustainability stats. Nobody is speaking to the emotional payoff â the feeling of being exactly yourself, without trying to explain it."'></textarea>
     </div>
 
     <div class="input-block">
       <div class="input-label">
         <span class="step-num">04</span>
         <span class="label-name">Where is this ad running and what are the rules?</span>
-        <span class="label-hint">— platform, character limit, tone, CTA</span>
+        <span class="label-hint">â platform, character limit, tone, CTA</span>
       </div>
       <textarea id="inp-constraint" rows="2" placeholder='e.g. "Instagram feed ad, 125 characters max, no hashtags. Tone: calm and confident. CTA: Shop Now"'></textarea>
     </div>
@@ -632,14 +637,14 @@
         <span class="label-name">How does your brand sound?</span>
         <span class="label-hint">&mdash; describe your tone like you&rsquo;re describing a person</span>
       </div>
-      <textarea id="inp-voice" rows="2" placeholder='e.g. "Deadpan and a little funny — like a friend who says exactly what everyone is thinking but never tries too hard. Confident without being loud. Never corporate."'></textarea>
+      <textarea id="inp-voice" rows="2" placeholder='e.g. "Deadpan and a little funny â like a friend who says exactly what everyone is thinking but never tries too hard. Confident without being loud. Never corporate."'></textarea>
     </div>
     <div id="form-error" class="error-box"></div>
 
     <button id="btn-generate" class="btn-primary" disabled onclick="generateAds()">
       Generate 3 Ad Variants &rarr;
     </button>
-    <p class="hint-text" id="form-hint">Fill in all 4 inputs to unlock</p>
+    <p class="hint-text" id="form-hint">Fill in all 5 inputs to unlock</p>
   </div>
 
   <!-- LOADING PANEL -->
@@ -666,7 +671,7 @@
       <div class="results-cta">
         <p class="cta-eyebrow">&#10022; Your variants are ready</p>
         <h2 class="cta-headline">Ready to run these?</h2>
-        <p class="cta-sub">BitBranding builds the full campaign — creative, targeting, and copy that actually converts. Let&rsquo;s turn these variants into real results.</p>
+        <p class="cta-sub">BitBranding builds the full campaign â creative, targeting, and copy that actually converts. Let&rsquo;s turn these variants into real results.</p>
         <a href="https://calendly.com/d/ytb-26d-hh5/ecomm-accelerator-strategy-session?utm_medium=website&utm_source=workflow&utm_campaign=ad-workflow-tool" target="_blank" class="cta-btn">Book a Free Strategy Call &rarr;</a>
         <p class="cta-note">No pressure &mdash; 20 minutes. We&rsquo;ll tell you exactly what we&rsquo;d do with these.</p>
       </div>
@@ -713,26 +718,26 @@
 
   var SYSTEM_PROMPT = [
     "You are a world-class direct-response copywriter for DTC and ecommerce brands.",
-    "You write ad copy that makes people stop scrolling and feel something — not copy that merely describes a product.",
+    "You write ad copy that makes people stop scrolling and feel something â got copy that merely describes a product.",
     "",
     "YOUR RULES:",
     "- Be specific. Vague copy does not convert. Name the feeling, the moment, the person.",
     "- Choose a side. The best ad copy has a point of view. It does not try to appeal to everyone.",
     "- Lead with emotion or identity, not features. Features are what you say after they already want it.",
     "- Use the brand's voice exactly as given. If they are funny, be funny. If they are quiet and confident, be that.",
-    "- Write like a human who knows this customer personally — not like a marketer who researched them.",
+    "- Write like a human who knows this customer personally â got like a marketer who researched them.",
     "- Short, punchy sentences outperform long elaborate ones for paid social.",
     "- Sensory and tactile language outperforms abstract language for clothing and lifestyle brands.",
     "",
-    "OUTPUT FORMAT — follow exactly:",
-    "**Variant A** (Cold audience — lead with identity or a feeling they already have)",
-    "[ad copy only — no explanation]",
+    "OUTPUT FORMAT â follow exactly:",
+    "**Variant A** (Cold audience â lead with identity or a feeling they already have)",
+    "[ad copy only â go explanation]",
     "",
-    "**Variant B** (Warm audience — lead with the outcome or transformation)",
-    "[ad copy only — no explanation]",
+    "**Variant B** (Warm audience â lead with the outcome or transformation)",
+    "[ad copy only â go explanation]",
     "",
-    "**Variant C** (Retargeting — lead with contrast, what makes this different from everything else they have seen)",
-    "[ad copy only — no explanation]",
+    "**Variant C** (Retargeting â lead with contrast, what makes this different from everything else they have seen)",
+    "[ad copy only â go explanation]",
     "",
     "After all 3 variants, add a short section:",
     "**Strategic notes:** One sentence per variant explaining the psychological mechanism and which platform or placement it suits best."
@@ -878,7 +883,7 @@
 
     var prompt = "Here are the selected ad variants. Extract the single strongest element from each " +
       "and write one unified ad that is better than any of them individually. Keep it within the " +
-      "same platform constraint (" + state.constraint + "). Return only the final combined ad copy — no preamble.\n\n" +
+      "same platform constraint (" + state.constraint + "). Return only the final combined ad copy â no preamble.\n\n" +
       selectedText;
 
     callClaude(
@@ -914,7 +919,7 @@
     state = { variants: [], selected: [], combined: "", constraint: "" };
     inputIds.forEach(function (id) { document.getElementById(id).value = ""; });
     document.getElementById("form-error").style.display = "none";
-    document.getElementById("btn-generate").disabled = true;
+    document.getElemntById("btn-generate").disabled = true;
     document.getElementById("form-hint").style.display = "block";
     showPanel("form");
   };
@@ -925,7 +930,7 @@
 
 })();
 
-  // ── EMAIL GATE ──
+  // ââ EMAIL GATE ââ
   (function () {
     var overlay = document.getElementById('gate-overlay');
     var form    = document.getElementById('gate-form');
@@ -946,7 +951,7 @@
       }
       errMsg.style.display = 'none';
       btn.disabled = true;
-      btn.textContent = 'Unlocking…';
+      btn.textContent = 'Unlockingâ¦';
 
       fetch('/api/email', {
         method: 'POST',
