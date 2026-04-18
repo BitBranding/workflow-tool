@@ -718,14 +718,14 @@
 
   var SYSTEM_PROMPT = [
     "You are a world-class direct-response copywriter for DTC and ecommerce brands.",
-    "You write ad copy that makes people stop scrolling and feel something â got copy that merely describes a product.",
+    "You write ad copy that makes people stop scrolling and feel something — not copy that merely describes a product.",
     "",
     "YOUR RULES:",
     "- Be specific. Vague copy does not convert. Name the feeling, the moment, the person.",
     "- Choose a side. The best ad copy has a point of view. It does not try to appeal to everyone.",
     "- Lead with emotion or identity, not features. Features are what you say after they already want it.",
     "- Use the brand's voice exactly as given. If they are funny, be funny. If they are quiet and confident, be that.",
-    "- Write like a human who knows this customer personally â got like a marketer who researched them.",
+    "- Write like a human who knows this customer personally — not like a marketer who researched them.",
     "- Short, punchy sentences outperform long elaborate ones for paid social.",
     "- Sensory and tactile language outperforms abstract language for clothing and lifestyle brands.",
     "",
@@ -919,7 +919,7 @@
     state = { variants: [], selected: [], combined: "", constraint: "" };
     inputIds.forEach(function (id) { document.getElementById(id).value = ""; });
     document.getElementById("form-error").style.display = "none";
-    document.getElemntById("btn-generate").disabled = true;
+    document.getElementById("btn-generate").disabled = true;
     document.getElementById("form-hint").style.display = "block";
     showPanel("form");
   };
